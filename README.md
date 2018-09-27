@@ -8,4 +8,4 @@ El Stack tecnológico que se utilizará para el desarrollo del proyecto será ME
 Leidy Rivera: Scrum Master - rivera.leidy@correounivalle.edu.co  
 Kevin Eduardo Franco: Development Team - franco.kevin@correounivalle.edu 
 Julan Fernando Anacona: Development Team - julian.anacona@correounivalle.edu.co  
-Juan David Tello: Development Team - tello.juan@correounivalle.edu.cof
+Juan David Tello: Development Team - tello.juan@correounivalle.edu.co
