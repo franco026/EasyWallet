@@ -6,6 +6,6 @@ El objetivo del proyecto es crear una aplicación web que simplifique el proceso
 El Stack tecnológico que se utilizará para el desarrollo del proyecto será MEAN + PostgreSQL como gestor de base de datos.  Equipo:  
 
 Leidy Rivera: Scrum Master - rivera.leidy@correounivalle.edu.co  
-Kevin Eduardo Franco: Development Team - franco.kevin@correounivalle.edu.co  
-Julian Fernando Anacona: Development Team - julian.anacona@correounivalle.edu.co  
-Juan David Tello: Development Team - tello.juan@correounivalle.edu.co
+Kevin Eduardo Franco: Development Team - franco.kevin@correounivalle.edu 
+Julan Fernando Anacona: Development Team - julian.anacona@correounivalle.edu.co  
+Juan David Tello: Development Team - tello.juan@correounivalle.edu.cof
