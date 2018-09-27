@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col s5">
+      <div class="card">
+        <div class="card-content">
+          <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" name="Name" #name="ngModel"
+                    [(ngModel)]="userService.selectuser.name" placeholder="Ingresa tu nombre">
+                  </div>
+                <div class="input-field col s12">
+                  <input type="password" name="Password" #name="ngModel"
+                  [(ngModel)]="userService.selectuser.password" placeholder="Ingresa la contraseña">
+                </div>
+                <div class="input-field col s12">
+                  <input type="text" name="Email" #name="ngModel"
+                  [(ngModel)]="userService.selectuser.email" placeholder="Ingresa correo">
+                </div>
+                <div class="card-action">
+                  <div class="input-field col 12">
+                    <button class="btn" style="margin-left: 80px">Registrase</button>
+                  </div>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col s7">
+
+      </div>
+  </div>
+</div>
