@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  AuthService,
+  FacebookLoginProvider,
+  GoogleLoginProvider
+} from 'angular-6-social-login';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +12,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private socialAuthService: AuthService) { }
 
   ngOnInit() {
+  }
+
+  facebookLogin() {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID)
+    .then(userData => {
+      console.log(userData);
+    });
   }
 
 }
