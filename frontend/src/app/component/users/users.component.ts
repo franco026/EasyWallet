@@ -19,7 +19,6 @@ export class UsersComponent implements OnInit {
 
   addUser(form: NgForm) {
 
-    console.log(form.value);
     this.userService.postUser(form.value)
     .subscribe(res => {
       console.log(res);
