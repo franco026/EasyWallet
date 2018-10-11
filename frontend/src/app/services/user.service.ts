@@ -8,7 +8,7 @@ import { User } from '../models/user';
 export class UserService {
   selectuser: User;
   user: User[];
-  readonly URL_API = 'http://localhost:3000/api/users';
+  readonly URL_API = 'http://localhost:3000/api/users/login';
 
   constructor(private http: HttpClient) {
     this.selectuser = new User();
@@ -23,6 +23,9 @@ export class UserService {
     return this.http.post(this.URL_API, userpost);
   }
 
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
   /** putUser(userput: User) {
     return this.http.put(this.URL_API + `${userput._id}`, userput);
   }*/
