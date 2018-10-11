@@ -18,7 +18,8 @@ import { NgModel } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
 
-  constructor(private socialAuthService: AuthService, private userService: UserService) { }
+  constructor(private socialAuthService: AuthService, private userService: UserService,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -37,11 +38,14 @@ export class LoginComponent implements OnInit {
       const user = new User;
       user.name = userData.name;
       user.email = userData.email;
-
       this.userService.postUser(user)
-      .subscribe(res => {
-        console.log(res);
+      .subscribe(
+        res => {
+          console.log(res);
+          localStorage.setItem('token', JSON.stringify(res));
+          this.router.navigate(['/profile']);
       });
+
     });
   }
 
