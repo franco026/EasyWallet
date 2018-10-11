@@ -1,11 +1,27 @@
-const pg = require('pg');
+const Sequelize = require('sequelize');
 
-const URI = "postgres://postgres:postgres@localhost:5433/EasyWallet";
+const sequelize = new Sequelize('EasyWallet', 'postgres', 'postgres',{
+    host: 'localhost',
+    port: 5433,
+    dialect: 'postgres',
+    pool:{
+        max:5,
+        min:0,
+        acquire:30000,
+        idle:10000
+    },
+    operatorsAliases:false,
+    define:{
+        timestamps:false,
+        freezeTableName:true
+    }
+});
 
-const client = new pg.Client(URI);
+const db = {};
 
-client.connect()
-    .then(db => console.log('BD is connected'))
-    .catch(err => console.error(err));
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
-module.exports = client;
+db.users = require('../server/models/users.js')(sequelize, Sequelize);
+
+module.exports = db;

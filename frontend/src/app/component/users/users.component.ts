@@ -16,13 +16,14 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
   }
-
+/**
   addUser(form: NgForm) {
 
     this.userService.postUser(form.value)
     .subscribe(res => {
       console.log(res);
     });
-  }
+
+}*/
 
 }

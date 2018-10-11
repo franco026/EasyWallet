@@ -1,18 +1,11 @@
 <div class="loginbox">
     <img class="avatar" src="../../../assets/images/logo.png" alt="logo de EasyWaller">
         <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
-                  <input type="text" name="Name" #name="ngModel"
+                  <input type="text" name="name" #name="ngModel"
                     [(ngModel)]="userService.selectuser.name" placeholder="Ingresa tu nombre">
 
-                  <input type="password" name="Password" #name="ngModel"
-                  [(ngModel)]="userService.selectuser.password" placeholder="Ingresa la contraseña">
-
-                  <input type="text" name="Email" #name="ngModel"
+                  <input type="text" name="email" #name="ngModel"
                   [(ngModel)]="userService.selectuser.email" placeholder="Ingresa correo">
-
-                  <input type="checkbox">
-                  <a>Al crear una cuenta nueva, acepta nuestros
-                      términos de servicio y política de privacidad.</a>
 
                   <button class="btn">Registrase</button>
 
