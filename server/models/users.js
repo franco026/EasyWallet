@@ -1,13 +1,12 @@
-const pg = require('pg');
+module.exports = (sequelize, Sequelize) =>{
+    const User = sequelize.define('users', {
+        name: {
+            type: Sequelize.STRING
+        },
+        email: {
+            type: Sequelize.STRING
+        }
+    });
 
-const { Schema } = pg.Schema;
-
-const UserSchema = new Schema(
-    {
-        Name: { type: String, require: true},
-        Password: { type: String, require: true},
-        Email: { type: String, require: true}
-    }
-);
-
-module.exports = pg.model('User',UserSchema);
+    return User;
+};

@@ -11,13 +11,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 
 import {
-  SocialLoginModule,
   AuthServiceConfig,
   GoogleLoginProvider,
   FacebookLoginProvider,
-  LinkedinLoginProvider,
   AuthService,
 } from 'angular-6-social-login';
+import { ProfileComponent } from './component/profile/profile.component';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -25,17 +24,22 @@ export function getAuthServiceConfigs() {
         {
           id: FacebookLoginProvider.PROVIDER_ID,
           provider: new FacebookLoginProvider('2060606834252509')
-        }
+        },
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider('294973461759-38t4n0em1pa815itio2tklrp47fea1ik.apps.googleusercontent.com')
+        },
       ]
   );
   return config;
-};
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
