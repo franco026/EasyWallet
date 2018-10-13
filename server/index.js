@@ -8,11 +8,6 @@
     //setting server
     app.set('port', process.env.PORT || 3000);
 
-    db.sequelize.sync({force: true}).then(() => {
-        console.log('Drop and Resync with { force: true }');
-    });
-
-
     //Middlewares
     app.use(express.json());
     app.use(morgan('dev'));

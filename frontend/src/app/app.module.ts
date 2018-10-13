@@ -1,14 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { UsersComponent } from './component/users/users.component';
 import { LoginComponent } from './component/login/login.component';
+import { ProfileComponent } from './component/profile/profile.component';
+import { CuentasComponent } from './component/cuentas/cuentas.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 import {
   AuthServiceConfig,
@@ -16,7 +19,6 @@ import {
   FacebookLoginProvider,
   AuthService,
 } from 'angular-6-social-login';
-import { ProfileComponent } from './component/profile/profile.component';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -39,7 +41,8 @@ export function getAuthServiceConfigs() {
     AppComponent,
     UsersComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    CuentasComponent
   ],
   imports: [
     BrowserModule,
@@ -47,11 +50,15 @@ export function getAuthServiceConfigs() {
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [AuthGuardService,
-    AuthService,
+  providers: [AuthGuardService, AuthService,
     {
     provide: AuthServiceConfig,
-    useFactory: getAuthServiceConfigs
+    useFactory: getAuthServiceConfigs,
+    },
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true,
     }
   ],
   bootstrap: [AppComponent]
