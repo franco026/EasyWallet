@@ -6,14 +6,13 @@ import { UserService } from '../services/user.service';
 export class TokenInterceptorService implements HttpInterceptor {
 
   constructor(private injector: Injector) { }
-
   intercept(req, next) {
     const userservice = this.injector.get(UserService);
-    const tokenizedReq = req.clone({
-      setHeaders: {
-        Authorization: 'Bearer ${userservice.getToken}'
+    const tokenizedReq = req.clone(
+      {
+       headers: req.headers.set('authorization', 'bearer ' + userservice.getToken())
       }
-    });
+    );
     return next.handle(tokenizedReq);
   }
 

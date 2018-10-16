@@ -1,35 +1,27 @@
 
-  <div class="no-js">
-    <nav id ="topNav" class ="nav-wrapper green">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <div class="container">
-            <a href="/" class="brand-logo">EasyWallet</a>
-            <ul>
-                <li class="col">
-                  <a title="Cuentas">Cuentas</a>
-                  <ul>
-                      <li><a [routerLink]="['account']" routerLinkActive="router-link-active">Crear Cuenta</a></li>
-                      <li><a href="#" title="Sub Nav Link 2">Editar Cuentas</a></li>
-                      <li><a href="#" title="Sub Nav Link 3">Eliminar Cuentas</a></li>
-                      <li><a href="#" title="Sub Nav Link 4">Ver</a></li>
-                  </ul>
-                </li>
-            <li class="col">
-                <a href="#" title="Transacciones">Transacciones</a>
-                <ul>
-                    <li><a href="#" title="Sub Nav Link 1">Sub Nav Link 1</a></li>
-                    <li><a href="#" title="Sub Nav Link 2">Sub Nav Link 2</a></li>
-                    <li><a href="#" title="Sub Nav Link 3">Sub Nav Link 3</a></li>
-                    <li><a href="#" title="Sub Nav Link 4">Sub Nav Link 4</a></li>
-                    <li class="last"><a href="#" title="Sub Nav Link 5">Sub Nav Link 5</a></li>
-                </ul>
-            </li>
-            <li  class="col"><a href="#" title="Nav Link 1">Reportes</a></li>
-            <li  class="col"><a style="cursor: pointer;" *ngIf=" userService.loggedIn" (click)="userService.getlogouUser()" title="Cerrar Sesión">Cerrar Sesión</a></li>
-
-          </ul>
+<div class="container">
+<div class="row">
+      <div class="col s5">
+        <div class="card">
+          <div class="card-content">
+            <form #accountform="ngForm" (ngSubmit)="addUser(accountform)">
+              <div class="row">
+                <div class="select-field col-s12">
+                  <a></a><select name="account_type" [(ngModel)]="someModel"
+                  [(value)]=userService.selectaccount.account_type>
+                    <option *ngFor="let r of items" [ngValue]="r.name">{{r.label}}</option>
+                  </select>
+                </div>
+                <div class="input-field col-s12">
+                  <input name="initial_balance" type="ngModel"  [(ngModel)]="userService.selectaccount.Initial_balance" min="0"  value="0" placeholder="Valor de la cuenta">
+                </div>
+                <div class="card-action">
+                  <div class="input-field col-s12">
+                    <button class="btn right">Save</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-      </nav>
-      <script src="js/jquery.js"></script>
-      <script src="js/modernizr.js"></script>
-</div>
+      </div>
