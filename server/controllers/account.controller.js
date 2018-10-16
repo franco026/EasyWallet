@@ -1,14 +1,16 @@
 const db = require('../database.js');
-const jwt =  require('jsonwebtoken');
 
 const Usercontr = db.account;
+const user = db.users;
+
+
 
 exports.Account = (req, res) =>{
     Usercontr.create({
-        "id_user": req.body.id_user,
+        "id_user": req.decoded,
         "account_type": req.body.account_type,
-        "inital_balance": req.body.inital_balance,
-        "state": req.body.state
+        "initial_balance": req.body.initial_balance ,
+        "state": 'activo'
     }).then(usercontr => {
         res.json(usercontr);
     }).catch(err =>{

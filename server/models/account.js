@@ -1,36 +1,37 @@
 
 module.exports = (sequelize, Sequelize) =>{ 
     const Account = sequelize.define('account', {
-        id: {
+        id_account: {
           type: Sequelize.INTEGER, 
           autoIncrement: true,
+          unique: true,
           primaryKey:true,
         },
         id_user: {
-            type: Sequelize.STRING,
+            type: Sequelize.INTEGER,
             allowNull: false,
-            references:{
-                model: 'users' ,
+            references: {
+                model: 'users',
                 key: 'id',
-                as: 'id_user',
                 deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
             }
         },
-
-        account_type: [
-            { unique: true,
-            fields: ['Ahorro','Corriente','Debito'] }
-        ],
-        inital_balance: {
+        account_type: { 
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        initial_balance: {
             type: Sequelize.BIGINT,
             allowNull: false
         },
-        state: [
-            { type: Sequelize.STRING,
-            fields: ['Activo','Inactivo'] }
-        ]
-       });
-    
-
+        state:{ 
+            type: Sequelize.STRING
+            }
+    }/** ,
+       {
+       indexes: [{
+         unique: true,
+         fields: ['account_type']
+       }]}*/);
     return Account;
 };

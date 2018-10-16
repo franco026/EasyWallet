@@ -5,8 +5,12 @@
     var bodyParser = require('body-parser');
     const db = require('./database');
 
-    //setting server
+    //setting server d
     app.set('port', process.env.PORT || 3000);
+/** 
+    db.sequelize.sync({force: true}).then(() => {
+        console.log('Drop and Resync with { force: true }');
+    });*/
 
     //Middlewares
     app.use(express.json());

@@ -14,16 +14,16 @@ exports.login = (req, res) => {
                     "name": req.body.name,
                     "email": req.body.email
                 }).then(usercontr => {
-                    let payload = { subject: usercontr.id }
-                    let token = jwt.sign(payload, 'secretkey')
+                    var payload = { subject: usercontr.id }
+                    const token = jwt.sign(payload, 'secretkey')
                     res.json({token});
                 }).catch(err =>{
                     console.log(err);
                     res.status(500).json({msg: "error", details: err});
                 });
             }else{
-                let payload = { subject: usercontr.id }
-                let token = jwt.sign(payload, 'secretkey')
+                var payload = { subject: usercontr.id }
+                const token = jwt.sign(payload, 'secretkey')
                 res.json({token});
             }
      })

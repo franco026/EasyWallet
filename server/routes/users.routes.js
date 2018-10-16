@@ -1,27 +1,37 @@
 const express = require('express');
 const router = express.Router();
+const jwt = require('jsonwebtoken');
 
 const Usercontr = require('../controllers/users.controller')
 const Accountcontr = require('../controllers/account.controller')
 
 function verifyToken(req, res, next){
-    if(!req.headers.authorization) {
-        return res.status(401).send('Unauthorized request')
+    
+  var token = req.headers.authorization.split(' ')[1];
+  
+  var token = token.split('token')[1];
+  var token = token.split(':')[1];
+  var token = token.split('}')[0];
+  var token = token.split('"')[1];
+  
+  //var token = {token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0I…2ODV9.C_02r6OgtQgIZlwcfmCP3aMiwtkffY7OmX3Q9kyZbgc"}
+  console.log(token);
+  // decode token
+  if (token) {
+    // verifies secret and checks exp
+    jwt.verify(token, 'secretkey', function(err, decoded) {      
+      if (err) {
+        return res.json({ success: false, message: 'Failed to authenticate token.' });    
+      } else {
+        // if everything is good, save to request for use in other routes
+        req.decoded = decoded.sub;    
+        
+        next();
       }
-      let token = req.headers.authorization.split(' ')[1]
-      if(token === 'null') {
-        return res.status(401).send('Unauthorized request')    
-      }
-      let payload = jwt.verify(token, 'secretKey')
-      if(!payload) {
-        return res.status(401).send('Unauthorized request')    
-      }
-      req.userId = payload.subject
-      next()
-    }
-
+    });
+  }}
 router.post('/login', Usercontr.login);
-router.post('/account', Accountcontr.Account);
+router.post('/account', verifyToken, Accountcontr.Account);
 
 
 
