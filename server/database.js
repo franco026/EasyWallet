@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('EasyWallet', 'postgres', 'postgres',{
+const sequelize = new Sequelize('EasyWallet', 'postgres', 'leidy',{
     host: 'localhost',
     port: 5433,
     dialect: 'postgres',

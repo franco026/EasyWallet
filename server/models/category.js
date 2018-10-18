@@ -1,3 +1,4 @@
+
 module.exports = (sequelize, Sequelize) =>{
     const Category = sequelize.define('category', {
         id_category: {
@@ -22,4 +23,3 @@ module.exports = (sequelize, Sequelize) =>{
 
     return Category;
 };
-

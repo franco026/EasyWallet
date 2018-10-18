@@ -44,6 +44,7 @@ export function getAuthServiceConfigs() {
     UsersComponent,
     LoginComponent,
     ProfileComponent,
+    EditaccountComponent,
     CuentasComponent,
     EditaccountComponent
   ],
