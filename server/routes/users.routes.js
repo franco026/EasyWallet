@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const Usercontr = require('../controllers/users.controller')
 const Accountcontr = require('../controllers/account.controller')
+const Categorycontr = require('../controllers/category.controller')
 
 function verifyToken(req, res, next){
     
@@ -14,7 +15,6 @@ function verifyToken(req, res, next){
   var token = token.split('}')[0];
   var token = token.split('"')[1];
   
-  //var token = {token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0I…2ODV9.C_02r6OgtQgIZlwcfmCP3aMiwtkffY7OmX3Q9kyZbgc"}
   console.log(token);
   // decode token
   if (token) {
@@ -32,10 +32,10 @@ function verifyToken(req, res, next){
   }}
 
 router.post('/login', Usercontr.login);
-router.get('/account', Accountcontr.getAccount);
+router.post('/category', verifyToken, Categorycontr.Category);
+router.get('/account', verifyToken, Accountcontr.getAccount);
 router.post('/account', verifyToken, Accountcontr.Account);
-router.put('/edit', Accountcontr.Update);
-
+router.put('/edit', verifyToken, Accountcontr.Update);
 
 
 module.exports = router;

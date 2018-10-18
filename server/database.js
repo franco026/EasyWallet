@@ -24,5 +24,7 @@ db.Sequelize = Sequelize;
 
 db.users = require('../server/models/users.js')(sequelize, Sequelize);
 db.account = require('../server/models/account.js')(sequelize, Sequelize);
+db.category = require('../server/models/category')(sequelize, Sequelize);
+db.income = require('../server/models/income')(sequelize, Sequelize);
 
 module.exports = db;

@@ -45,6 +45,7 @@ export function getAuthServiceConfigs() {
     LoginComponent,
     ProfileComponent,
     CuentasComponent,
+    EditaccountComponent
   ],
   imports: [
     BrowserModule,
