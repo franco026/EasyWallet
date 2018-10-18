@@ -20,6 +20,13 @@ module.exports = (sequelize, Sequelize) =>{
             type: Sequelize.STRING,
             allowNull: false
         },
+        name: {
+            type: Sequelize.STRING
+        },
+        state:{ 
+            type: Sequelize.STRING,
+            allowNull: false
+            },
         initial_balance: {
             type: Sequelize.BIGINT,
             allowNull: false

@@ -9,6 +9,7 @@ exports.Account = (req, res) =>{
     Usercontr.create({
         "id_user": req.decoded,
         "account_type": req.body.account_type,
+        "name": req.body.name,
         "initial_balance": req.body.initial_balance ,
         "state": 'activo'
     }).then(usercontr => {
@@ -19,7 +20,9 @@ exports.Account = (req, res) =>{
     })};
 
 exports.getAccount = (req, res) => {
-   Usercontr.findAll()
+   Usercontr.findAll({
+       where: {id_user: req.decoded}
+   })
    .then(usercontr =>{  
     res.json(usercontr);
    })  

@@ -1,18 +1,25 @@
-module.exports = (sequelize, Sequelize) =>{ 
+module.exports = (sequelize, Sequelize) =>{
     const Category = sequelize.define('category', {
-        id: {
-          type: Sequelize.INTEGER, 
-          autoIncrement: true,
-          primaryKey:true,
+        id_category: {
+            type: Sequelize.INTEGER, 
+            autoIncrement: true,
+            primaryKey:true,
         },
-        name: {
+        id_user: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'users',
+                key: 'id',
+                deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+            }
+        },
+        name_category: {
             type: Sequelize.STRING,
             allowNull: false
         }
-       },{//Configuration
-        freezeTableName: true,
-        tableName: 'category'
-       }); 
+    });
 
     return Category;
 };
+

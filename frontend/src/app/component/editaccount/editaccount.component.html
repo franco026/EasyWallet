@@ -13,6 +13,9 @@
                     </select>1
                   </div>
                   <div class="input-field col-s12">
+                    <input name="name" type="ngModel"  [(ngModel)] = "userService.selectaccount.name" placeholder="Nombre de la cuenta">
+                  </div>
+                  <div class="input-field col-s12">
                     <input name="initial_balance" type="ngModel"  [(ngModel)] = "userService.selectaccount.initial_balance" min="0"  value="0" placeholder="Valor de la cuenta">
                   </div>
                   <div class="select-field col-s12">
@@ -34,18 +37,21 @@
             <table class="striped highlight black-text">
               <thead>
                 <th>Cuenta</th>
+                <th>Nombre</th>
                 <th>Valor</th>
                 <th>Estado</th>
               </thead>
               <tbody>
                 <tr *ngFor="let account of userService.account">
                   <td>{{ account.account_type }}</td>
+                  <td>{{ account.name }}</td>
                   <td>{{ account.initial_balance }}</td>
                   <td>{{ account.state }}</td>
-
-                  <a (click)="editAccount(account, account.state, account.account_type)" >
+                  <td>
+                    <a (click)="editAccount(account, account.state, account.account_type)" >
                       <i class="material-icons">edit</i>
                     </a>
+                  </td>
                 </tr>
               </tbody>
             </table>

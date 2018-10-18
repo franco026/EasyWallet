@@ -12,6 +12,9 @@
                     <option *ngFor="let r of items" [ngValue]="r.name">{{r.label}}</option>
                   </select>
                 </div>
+                <div class="select-field col-s12">
+                  <input name="name" type="ngModel" [(ngModel)] = "userService.selectaccount.name">
+                </div>
                 <div class="input-field col-s12">
                   <input name="initial_balance" type="ngModel"  [(ngModel)] = "userService.selectaccount.initial_balance" min="0"  value="0" placeholder="Valor de la cuenta">
                 </div>
