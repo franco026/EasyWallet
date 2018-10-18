@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+        <div class="col s5">
+          <div class="card">
+            <div class="card-content">
+              <form #accountform="ngForm" (ngSubmit)="addUser(accountform)">
+                <input type="hidden" name="id_account" [(ngModel)] = "userService.selectaccount.id_account">
+                <div class="row">
+                  <div class="select-field col-s12">
+                    <a></a><select name="account_type" [(ngModel)] = "someModel"
+                    [(value)] = userService.selectaccount.account_type>
+                      <option *ngFor="let r of items" [ngValue]="r.name">{{r.label}}</option>
+                    </select>1
+                  </div>
+                  <div class="input-field col-s12">
+                    <input name="initial_balance" type="ngModel"  [(ngModel)] = "userService.selectaccount.initial_balance" min="0"  value="0" placeholder="Valor de la cuenta">
+                  </div>
+                  <div class="select-field col-s12">
+                    <a></a><select name="state" [(ngModel)] = "someModelstate"
+                    [(value)] = userService.selectaccount.state>
+                      <option *ngFor="let f of itemsvalid" [ngValue]="f.name">{{f.label}}</option>
+                    </select>
+                  </div>
+                  <div class="card-action">
+                    <div class="input-field col-s12">
+                      <button class="btn right">Save</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col s7">
+            <table class="striped highlight black-text">
+              <thead>
+                <th>Cuenta</th>
+                <th>Valor</th>
+                <th>Estado</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let account of userService.account">
+                  <td>{{ account.account_type }}</td>
+                  <td>{{ account.initial_balance }}</td>
+                  <td>{{ account.state }}</td>
+
+                  <a (click)="editAccount(account, account.state, account.account_type)" >
+                      <i class="material-icons">edit</i>
+                    </a>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+</div>

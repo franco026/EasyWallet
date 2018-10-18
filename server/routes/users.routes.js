@@ -24,14 +24,17 @@ function verifyToken(req, res, next){
         return res.json({ success: false, message: 'Failed to authenticate token.' });    
       } else {
         // if everything is good, save to request for use in other routes
-        req.decoded = decoded.sub;    
+        req.decoded = decoded.subject;    
         
         next();
       }
     });
   }}
+
 router.post('/login', Usercontr.login);
+router.get('/account', Accountcontr.getAccount);
 router.post('/account', verifyToken, Accountcontr.Account);
+router.put('/edit', Accountcontr.Update);
 
 
 

@@ -17,3 +17,22 @@ exports.Account = (req, res) =>{
         console.log(err);
         res.status(500).json({msg: "error", details: err});
     })};
+
+exports.getAccount = (req, res) => {
+   Usercontr.findAll()
+   .then(usercontr =>{  
+    res.json(usercontr);
+   })  
+};
+
+exports.Update = (req, res) =>{
+    const id = parseInt(req.body.id_account);
+
+    Usercontr.update(
+       req.body,
+        { where:
+            { id_account: id }
+        })
+        .then(usercontr =>{
+            res.json(usercontr)
+        })};

@@ -13,7 +13,7 @@ import { CuentasComponent } from './component/cuentas/cuentas.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-
+import { EditaccountComponent } from './component/editaccount/editaccount.component';
 
 import {
   AuthServiceConfig,
@@ -44,7 +44,7 @@ export function getAuthServiceConfigs() {
     UsersComponent,
     LoginComponent,
     ProfileComponent,
-    CuentasComponent
+    CuentasComponent,
   ],
   imports: [
     BrowserModule,
