@@ -24,16 +24,7 @@
     //Routes
     app.use('/api/users' , require('./routes/users.routes'));
 
-
-<<<<<<< HEAD
-
-// Starting the server
-app.listen(app.get('port'), () => {
-    console.log('Server on port', app.get('port'));
-});
-=======
     // Starting the server
     app.listen(     app.get('port'), () => {
         console.log('serve on port', app.get('port'));
     });
->>>>>>> master
