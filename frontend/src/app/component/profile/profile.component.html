@@ -8,7 +8,7 @@
                   <a>Cuentas</a>
                   <ul>
                       <li><a routerLink='/account' title="Sub Nav Link 1">Crear Cuenta</a></li>
-                      <li><a href="#" title="Sub Nav Link 2">Editar Cuentas</a></li>
+                      <li><a [routerLink]="['/account/edit']" routerLinkActive="router-link-active"  title="Sub Nav Link 2">Editar Cuentas</a></li>
                       <li><a href="#" title="Sub Nav Link 3">Eliminar Cuentas</a></li>
                       <li><a href="#" title="Sub Nav Link 4">Ver</a></li>
                   </ul>

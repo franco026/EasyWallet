@@ -8,12 +8,12 @@
               <div class="row">
                 <div class="select-field col-s12">
                   <a></a><select name="account_type" [(ngModel)]="someModel"
-                  [(value)]=userService.selectaccount.account_type>
+                  [(value)] = userService.selectaccount.account_type>
                     <option *ngFor="let r of items" [ngValue]="r.name">{{r.label}}</option>
                   </select>
                 </div>
                 <div class="input-field col-s12">
-                  <input name="initial_balance" type="ngModel"  [(ngModel)]="userService.selectaccount.Initial_balance" min="0"  value="0" placeholder="Valor de la cuenta">
+                  <input name="initial_balance" type="ngModel"  [(ngModel)] = "userService.selectaccount.initial_balance" min="0"  value="0" placeholder="Valor de la cuenta">
                 </div>
                 <div class="card-action">
                   <div class="input-field col-s12">

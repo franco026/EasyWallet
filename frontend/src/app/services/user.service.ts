@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { Account } from '../models/accounts';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class UserService {
   user: User[];
   readonly URL_API = 'http://localhost:3000/api/users/login';
   readonly URL_APIA = 'http://localhost:3000/api/users/account';
+  readonly URL_APIE = 'http://localhost:3000/api/users/edit';
 
   constructor(private http: HttpClient, private router: Router) {
     this.selectuser = new User();
@@ -22,6 +24,17 @@ export class UserService {
 
   getUser() {
     return this.http.get(this.URL_API);
+  }
+
+  getAccount() {
+    return this.http.get(this.URL_APIA);
+  }
+
+
+
+  putAccount(accountput: Account) {
+    console.log(accountput);
+    return this.http.put(this.URL_APIE, accountput);
   }
 
   postUser(userpost: User) {

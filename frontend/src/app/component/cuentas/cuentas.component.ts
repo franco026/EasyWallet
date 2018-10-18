@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { Account } from '../../models/accounts';
+
+declare var M: any;
 
 @Component({
   selector: 'app-cuentas',
