@@ -1,12 +1,38 @@
 const express = require('express');
 const router = express.Router();
+const jwt = require('jsonwebtoken');
 
 const Usercontr = require('../controllers/users.controller')
+const Accountcontr = require('../controllers/account.controller')
 
-router.get('/', Usercontr.getUsers);
-router.post('/', Usercontr.createUser);
-router.get('/:id', Usercontr.getUser);
-router.put('/:id', Usercontr.editUser);
+function verifyToken(req, res, next){
+    
+  var token = req.headers.authorization.split(' ')[1];
+  
+  var token = token.split('token')[1];
+  var token = token.split(':')[1];
+  var token = token.split('}')[0];
+  var token = token.split('"')[1];
+  
+  //var token = {token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0I…2ODV9.C_02r6OgtQgIZlwcfmCP3aMiwtkffY7OmX3Q9kyZbgc"}
+  console.log(token);
+  // decode token
+  if (token) {
+    // verifies secret and checks exp
+    jwt.verify(token, 'secretkey', function(err, decoded) {      
+      if (err) {
+        return res.json({ success: false, message: 'Failed to authenticate token.' });    
+      } else {
+        // if everything is good, save to request for use in other routes
+        req.decoded = decoded.sub;    
+        
+        next();
+      }
+    });
+  }}
+router.post('/login', Usercontr.login);
+router.post('/account', verifyToken, Accountcontr.Account);
+
 
 
 module.exports = router;
